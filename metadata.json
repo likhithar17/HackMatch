@@ -1,0 +1,6 @@
+{
+  "name": "HackMatch",
+  "description": "A modern hackathon team finder platform for students to build teams, search profiles, and collaborate on projects.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

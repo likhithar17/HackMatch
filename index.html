@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HackMatch — Premium Student Hackathon Team Finder</title>
+  <!-- Google Font: Plus Jakarta Sans for Swiss Premium Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Lucide Clean Icon CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Custom Style CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 1. Header Navigation Bar -->
+  <header class="header">
+    <div class="header-container">
+      <div class="logo-area" onclick="showView('home')">
+        <div class="logo-icon-box">
+          <i data-lucide="users" class="logo-icon"></i>
+        </div>
+        <div class="logo-brand">
+          <span class="logo-main-text">HackMatch</span>
+          <span class="logo-badge">MVP</span>
+        </div>
+      </div>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="desktop-nav">
+        <button class="nav-btn active" id="nav-btn-home" onclick="showView('home')">
+          <i data-lucide="sparkles"></i>
+          <span>Home</span>
+        </button>
+        <button class="nav-btn" id="nav-btn-explorer" onclick="showView('explorer')">
+          <i data-lucide="users-round"></i>
+          <span>Explore Teams</span>
+        </button>
+        <button class="nav-btn" id="nav-btn-create" onclick="showView('create')">
+          <i data-lucide="user-plus"></i>
+          <span>Create Profile</span>
+        </button>
+      </nav>
+
+      <!-- Integrative Guide Trigger and Hamburger -->
+      <div class="action-trigger-row">
+        <button class="guide-trigger-btn" onclick="openFirebaseGuide()">
+          <i data-lucide="database"></i>
+          <span class="btn-long-label">Firebase Integrator</span>
+          <span class="btn-short-label">Firebase</span>
+        </button>
+        
+        <button class="mobile-menu-trigger" onclick="toggleMobileNav()">
+          <i data-lucide="menu" id="menu-icon-state"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer Panel -->
+    <div class="mobile-nav-panel" id="mobile-nav-panel">
+      <button class="mobile-nav-item active" id="mob-btn-home" onclick="showView('home'); toggleMobileNav()">
+        <i data-lucide="sparkles"></i>
+        <span>Home</span>
+      </button>
+      <button class="mobile-nav-item" id="mob-btn-explorer" onclick="showView('explorer'); toggleMobileNav()">
+        <i data-lucide="users-round"></i>
+        <span>Explore Teams</span>
+      </button>
+      <button class="mobile-nav-item" id="mob-btn-create" onclick="showView('create'); toggleMobileNav()">
+        <i data-lucide="user-plus"></i>
+        <span>Create Profile</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- 2. Main Views Port -->
+  <main class="main-viewport">
+
+    <!-- PAGE VIEW 1: LANDING PAGE -->
+    <section id="view-home" class="page-view active">
+      <div class="hero-section">
+        <div class="hero-grid">
+          <!-- Hero Text -->
+          <div class="hero-content">
+            <div class="geometric-badge">Beta Access Now Open</div>
+            <h1 class="hero-title">
+              Find the perfect <br>
+              <span class="gradient-text">teammates</span> <br>
+              for your next hackathon 🚀
+            </h1>
+            <p class="hero-paragraph">
+              The smartest way for students to connect, form squads, and build world-changing projects together. No more solo hacking.
+            </p>
+            <div class="hero-button-group">
+              <button class="btn btn-primary geometric-btn-primary" onclick="showView('create')">
+                <span>Create Profile</span>
+                <i data-lucide="arrow-right"></i>
+              </button>
+              <button class="btn btn-secondary" onclick="showView('explorer')">
+                <span>Explore Teams</span>
+              </button>
+            </div>
+
+            <!-- Social Metrics Shelf -->
+            <div class="metrics-shelf">
+              <div class="metric-item">
+                <span class="metric-num">500+</span>
+                <span class="metric-label">Students online</span>
+              </div>
+              <div class="metric-divider"></div>
+              <div class="metric-item">
+                <span class="metric-num">120+</span>
+                <span class="metric-label">Teams Formed</span>
+              </div>
+              <div class="metric-divider"></div>
+              <div class="metric-item">
+                <span class="metric-num">15+</span>
+                <span class="metric-label">Active Hackathons</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Visual Feature Card -->
+          <div class="hero-visual-container">
+            <div class="hero-visual-inner">
+              <div class="geometric-card visual-mock-card">
+                <div class="mock-card-header">
+                  <div class="mock-user-box">
+                    <div class="mock-avatar">JS</div>
+                    <div>
+                      <h3 class="mock-name">Jordan Smith</h3>
+                      <p class="mock-school">Stanford University</p>
+                    </div>
+                  </div>
+                  <span class="mock-role-badge">Frontend</span>
+                </div>
+                
+                <p class="mock-bio">
+                  "Full-stack dev looking to build a Fintech app at EthGlobal. Let's make things beautiful."
+                </p>
+
+                <div class="mock-tags">
+                  <span class="mock-tag">React</span>
+                  <span class="mock-tag">Python</span>
+                  <span class="mock-tag">Node.js</span>
+                </div>
+
+                <div class="mock-footer border-t">
+                  <div class="availability-indicator">
+                    <span class="pulse-dot"></span>
+                    <span class="availability-text">Available to Match</span>
+                  </div>
+                  <button class="mock-action-btn" onclick="showView('explorer')">
+                    <span>View Profile</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Features Shelf Section -->
+      <div class="features-shelf-section">
+        <div class="features-header">
+          <h2 class="features-title">Engineered for busy students</h2>
+          <p class="features-desc">Forming a team is easy. We omit the fluff to give you high-quality matchmaking filters.</p>
+        </div>
+        <div class="features-grid">
+          <div class="feature-box">
+            <div class="feature-icon bg-blue-theme">
+              <i data-lucide="users"></i>
+            </div>
+            <h3 class="feature-box-title">Detailed Profile Cards</h3>
+            <p class="feature-box-desc">
+              Easily scan college names, specialized roles, GitHub portfolios, LinkedIn accounts, and exact visual tags representing students' stack.
+            </p>
+          </div>
+          <div class="feature-box">
+            <div class="feature-icon bg-indigo-theme">
+              <i data-lucide="code"></i>
+            </div>
+            <h3 class="feature-box-title">Search & Filters Engine</h3>
+            <p class="feature-box-desc">
+              Instantly filter the candidate pool by skills (e.g. PyTorch, Figma, TypeScript), college, or explicit hackathon requirements.
+            </p>
+          </div>
+          <div class="feature-box">
+            <div class="feature-icon bg-purple-theme">
+              <i data-lucide="zap"></i>
+            </div>
+            <h3 class="feature-box-title">Firebase Companion</h3>
+            <p class="feature-box-desc">
+              No mock setups that block you. Includes instructions and full setup codes so you can integrate Real-time Auth and Firestore database easily.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Callout block -->
+      <div class="callout-interactive-container">
+        <div class="callout-card">
+          <h2 class="callout-title">Ready to hack? Join the network today</h2>
+          <p class="callout-desc">Set up your custom matching criteria, select roles, and collaborate in team groups. Take the first step to winning the grand prize.</p>
+          <div class="callout-btns">
+            <button class="callout-btn-primary" onclick="showView('create')">Get Started — Make Profile</button>
+            <button class="callout-btn-outline" onclick="showView('explorer')">Browse Hackers</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE VIEW 2: CREATE PROFILE PAGE -->
+    <section id="view-create" class="page-view">
+      <div class="creator-header">
+        <h1 class="creator-title">Build Your Hacker Profile</h1>
+        <p class="creator-subtitle">Tell other hackathon participants what you build, what skills you master, and who you are recruiting.</p>
+      </div>
+
+      <div class="form-outer-wrapper">
+        <form id="profile-creator-form" class="profile-creator-form" onsubmit="handleProfileSubmit(event)">
+          
+          <!-- Avatar Uploader Block -->
+          <div class="form-interactive-row">
+            <div class="avatar-setup-column">
+              <span class="field-label-caps">Avatar Photo</span>
+              <div class="avatar-drop-zone" id="avatar-drop-zone" onclick="triggerAvatarUpload()">
+                <div class="avatar-placeholder-content" id="avatar-placeholder-inner">
+                  <i data-lucide="upload-cloud"></i>
+                  <span class="drop-title">Upload Avatar</span>
+                  <span class="drop-subtitle">Click to choose image</span>
+                </div>
+                <img id="avatar-file-preview" class="avatar-file-preview hidden" alt="Uploaded Profile Preview">
+                <div class="avatar-overlay-text">Change Avatar</div>
+              </div>
+              <input type="file" id="avatar-file-input" class="hidden" accept="image/*" onchange="previewAvatarImage(event)">
+              <p class="avatar-guidelines">Accepts JPG, PNG up to 2MB. Optional.</p>
+            </div>
+
+            <!-- Main text fields -->
+            <div class="avatar-fields-column-grid">
+              
+              <!-- Name Input -->
+              <div class="form-group span-2">
+                <label for="form-full-name" class="field-label-classic">Full Name <span class="required-star">*</span></label>
+                <input type="text" id="form-full-name" class="form-text-input" placeholder="e.g. Alex Rivera" required>
+                <span class="input-error-msg" id="err-full-name"></span>
+              </div>
+
+              <!-- College Input -->
+              <div class="form-group">
+                <label for="form-college" class="field-label-classic">College / University <span class="required-star">*</span></label>
+                <input type="text" id="form-college" class="form-text-input" placeholder="e.g. Stanford University" required>
+                <span class="input-error-msg" id="err-college"></span>
+              </div>
+
+              <!-- Role select dropdown -->
+              <div class="form-group">
+                <label for="form-role" class="field-label-classic">Hacker Role <span class="required-star">*</span></label>
+                <div class="select-wrapper">
+                  <select id="form-role" class="form-select-input">
+                    <option value="Frontend Developer">Frontend Developer</option>
+                    <option value="Backend Developer">Backend Developer</option>
+                    <option value="Full Stack Developer">Full Stack Developer</option>
+                    <option value="UI/UX Designer">UI/UX Designer</option>
+                    <option value="AI/ML Engineer">AI/ML Engineer</option>
+                    <option value="Product Manager">Product Manager</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Email Input -->
+              <div class="form-group span-2">
+                <label for="form-email" class="field-label-classic">Email Address <span class="required-star">*</span></label>
+                <div class="input-with-icon-left">
+                  <i data-lucide="mail" class="prefix-icon"></i>
+                  <input type="email" id="form-email" class="form-text-input" placeholder="you@college.edu (Shows on card contact buttons)" required>
+                </div>
+                <span class="input-error-msg" id="err-email"></span>
+                <p class="form-tip-text">Other hackers will click this to email you directly.</p>
+              </div>
+
+            </div>
+          </div>
+
+          <hr class="form-divider-line">
+
+          <!-- Deep details Area -->
+          <div class="deep-form-details-grid">
+            <div class="form-group">
+              <label for="form-bio" class="field-label-classic">Hacker Bio / About <span class="required-star">*</span></label>
+              <textarea id="form-bio" rows="3" class="form-textarea-input" placeholder="Give a summary of your hacker background. What scale projects have you deployed? What tech vibe matches your style? (At least 10 letters)" required></textarea>
+              <span class="input-error-msg" id="err-bio"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="form-lookingfor" class="field-label-classic">Who or What are you looking for? <span class="required-star">*</span></label>
+              <textarea id="form-lookingfor" rows="2" class="form-textarea-input" placeholder="e.g. Seeking a backend engineer who knows Python, or looking to join an existing Web3/DeFi group." required></textarea>
+              <span class="input-error-msg" id="err-lookingfor"></span>
+            </div>
+          </div>
+
+          <hr class="form-divider-line">
+
+          <!-- Custom Skills Tag interactive picker shelf -->
+          <div class="form-group">
+            <div class="skills-label-row">
+              <label class="field-label-classic">Technology Stack / Skills list <span class="required-star">*</span></label>
+              <span class="skills-count-badge" id="skills-count-badge">2 Selected</span>
+            </div>
+
+            <!-- Active lists -->
+            <div class="skills-board-pane" id="skills-board-pane">
+              <!-- Rendered tags go here dynamically via scripts -->
+            </div>
+
+            <!-- Inline addition tag row -->
+            <div class="inline-skill-adder-container">
+              <input type="text" id="form-skill-input" class="form-text-input" placeholder="Type a skill (e.g. Next.js, PyTorch) and tap dynamic Add">
+              <button type="button" class="btn btn-dark-compact" onclick="addCustomSkillFromInput()">Add Skill</button>
+            </div>
+
+            <!-- Popular Quick Shelf Selection suggestions -->
+            <span class="quick-suggests-title">Popular Quick-Select Tags:</span>
+            <div class="quick-suggests-shelf" id="quick-suggests-shelf">
+              <!-- Render list of popular buttons -->
+            </div>
+            <span class="input-error-msg" id="err-skills-list" style="display: block; margin-top: 5px;"></span>
+          </div>
+
+          <hr class="form-divider-line">
+
+          <!-- Developer Portfolios -->
+          <div class="form-group">
+            <label class="field-label-classic uppercase-heading">Developer Portfolios (URLs)</label>
+            <div class="portfolios-grid">
+              
+              <div class="portfolio-input-field">
+                <div class="portfolio-title-row">
+                  <i data-lucide="github"></i>
+                  <span>GitHub Username or Link</span>
+                </div>
+                <input type="text" id="form-github" class="form-text-input" placeholder="https://github.com/developer">
+                <span class="input-error-msg" id="err-github"></span>
+              </div>
+
+              <div class="portfolio-input-field">
+                <div class="portfolio-title-row">
+                  <i data-lucide="linkedin" class="text-blue-color"></i>
+                  <span>LinkedIn Profile Link</span>
+                </div>
+                <input type="text" id="form-linkedin" class="form-text-input" placeholder="https://linkedin.com/in/hacker">
+                <span class="input-error-msg" id="err-linkedin"></span>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Form submit buttons -->
+          <div class="form-submit-foot-panel">
+            <button type="button" class="btn-cancel" onclick="showView('home')">Cancel</button>
+            <button type="submit" class="btn btn-primary geometric-btn-primary" id="form-submit-btn">
+              <i data-lucide="user-plus"></i>
+              <span>Deploy Profile Card</span>
+            </button>
+          </div>
+
+        </form>
+      </div>
+
+    </section>
+
+    <!-- PAGE VIEW 3: TEAM EXPLORER PAGE -->
+    <section id="view-explorer" class="page-view">
+      <div class="explorer-intro-heading">
+        <div>
+          <h1 class="explorer-view-title">Meet Student Rockstars</h1>
+          <p class="explorer-view-subtitle">Browse registered student profiles to assemble your tech team. Click match to invite.</p>
+        </div>
+        <div class="pool-metrics-box">
+          <i data-lucide="users"></i>
+          <span id="active-pools-indicator">Active Pools: 6 (Matches found: 6)</span>
+        </div>
+      </div>
+
+      <!-- 🔮 AI MATCHMAKER COMPONENT -->
+      <div class="ai-matchmaker-banner-card geometric-card">
+        <div class="ai-banner-content">
+          <div class="ai-badge-row">
+            <span class="ai-stars-badge">
+              <i data-lucide="sparkles"></i>
+              <span>AI Teammate Suggestion Engine</span>
+            </span>
+          </div>
+          <h2 class="ai-banner-title">Find compatible co-founders in seconds with Google Gemini 🔮</h2>
+          <p class="ai-banner-desc">Let Gemini analyze current available hackers stack, complementary strengths, and project descriptions to formulate your ultimate recommended squad.</p>
+          
+          <div class="ai-form-prompt-row">
+            <div class="ai-input-col">
+              <input type="text" id="ai-custom-prompt-input" class="ai-prompt-input" placeholder="Describe the ideal teammate background or a specific tech vibe you require (e.g. 'A Python expert for CV apps' or 'Figma designer')...">
+            </div>
+            <button class="btn-ai-match" onclick="triggerAiRecommendations()">
+              <i data-lucide="cpu"></i>
+              <span>Generate Smart Recommendations</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Render Matchmaker Results Panel (initially hidden) -->
+        <div id="ai-recs-panel" class="ai-recs-panel hidden">
+          <div class="recs-header">
+            <h3 class="recs-title">
+              <i data-lucide="sparkles" class="text-purple"></i>
+              <span>Gemini Recommended Co-founders</span>
+            </h3>
+            <button class="btn-close-recs" onclick="closeAiRecommendations()">Dismiss</button>
+          </div>
+          
+          <!-- Loading Screen -->
+          <div id="ai-recs-loading" class="ai-recs-loading hidden">
+            <div class="ai-spinner"></div>
+            <p>Our AI Matchmaker Coach is analyzing core skills compatibility...</p>
+          </div>
+
+          <!-- Error Alert -->
+          <div id="ai-recs-error-box" class="ai-error-box hidden">
+            <i data-lucide="alert-triangle font-bold"></i>
+            <span id="ai-error-text">API error</span>
+          </div>
+
+          <!-- Dynamic recommendation cards grid -->
+          <div id="ai-recs-grid" class="ai-recs-grid">
+            <!-- Cards go here dynamically via scripts -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Advanced Filter Panel board -->
+      <div class="filter-controls-panel geometric-card">
+        
+        <!-- Search query row -->
+        <div class="search-input-wrapper">
+          <i data-lucide="search" class="search-icon-badge"></i>
+          <input type="text" id="explorer-search-input" placeholder="Search by student name, college, skills stack, or keywords..." oninput="handleSearchFilterInput(event)">
+          <button id="clear-search-query-btn" class="clear-badge-btn hidden" onclick="clearSearchQueryInput()">Clear</button>
+        </div>
+
+        <!-- Role tab badges shelf -->
+        <div class="filters-role-block">
+          <span class="filter-group-header">Filter by Specialization Role:</span>
+          <div class="role-pills-row" id="role-pills-row">
+            <!-- Rendered dynamically -->
+          </div>
+        </div>
+
+        <!-- Technology tag filters selection block -->
+        <div class="filters-technology-block">
+          <span class="filter-group-header">Require Technologies (AND Combo matching):</span>
+          <div class="tech-checkbox-shelf" id="tech-checkbox-shelf">
+            <!-- Loaded dynamically in JS -->
+          </div>
+        </div>
+
+        <!-- Clean Filter indicators row -->
+        <div class="filtering-status-indicator-strip hidden" id="filtering-status-strip">
+          <div class="status-left-details">
+            <span>Active filters:</span>
+            <div class="active-indicators-pills" id="active-indicators-pills"></div>
+          </div>
+          <button class="clear-all-criteria-btn" onclick="clearAllFilteringCriteria()">Clear All Filtering Criteria</button>
+        </div>
+
+      </div>
+
+      <!-- Profiles card layout grid -->
+      <div class="profiles-card-mesh-grid" id="profiles-card-mesh-grid">
+        <!-- Loaded dynamically from static JSON mockup inside script.js -->
+      </div>
+
+      <!-- Empty state layout screen representation -->
+      <div class="empty-results-overlay-card hidden" id="empty-results-overlay-card">
+        <div class="empty-quest-badge">?</div>
+        <h3 class="empty-quest-title">No student hackers found</h3>
+        <p class="empty-quest-desc">We couldn't locate any hackers matching your active filters. Try adjusting roles or clearing requirement checkboxes to expand the query range.</p>
+        <button class="empty-quest-action-btn" onclick="clearAllFilteringCriteria()">Reset All Dynamic Filters</button>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- 3. Dynamic Modal / Drawers overlays -->
+  <!-- MODAL: Success creation Popover -->
+  <div class="modal-overlay hidden" id="modal-success-popover">
+    <div class="modal-content-card animate-scaleIn">
+      <div class="success-radial-check">
+        <i data-lucide="sparkles"></i>
+      </div>
+      <h3 class="success-popup-title">Success! Card Deployed</h3>
+      <p class="success-popup-desc">Congratulations! Your profile card is now deployed into the local student pool memory. Go ahead and search, filter or find teammates using this card during your current session.</p>
+      
+      <div class="integration-step-hint-box">
+        <div class="hint-header">
+          <span class="pulse-emerald"></span>
+          <span class="hint-title">Next Step: Connect Database</span>
+        </div>
+        <p class="hint-message">Click the <b class="highlighted">Firebase Integrator</b> in the top navbar to automatically extract code snippets to save this profile into real persistent storage.</p>
+      </div>
+
+      <button class="modal-dismiss-btn" onclick="dismissSuccessPopoverAndExplore()">Explore Group Pools</button>
+    </div>
+  </div>
+
+  <!-- MODAL: Firebase Integrator Sidebar Drawer -->
+  <div class="sidebar-guide-overlay hidden" id="sidebar-guide-overlay">
+    <!-- Overlay Clickout target -->
+    <div class="guide-clickout-target" onclick="closeFirebaseGuide()"></div>
+
+    <div class="sidebar-guide-drawer animate-slideLeft">
+      
+      <!-- Drawer Header -->
+      <div class="drawer-header">
+        <div class="drawer-header-left">
+          <span class="database-brand-accent">
+            <i data-lucide="database"></i>
+          </span>
+          <div>
+            <h2 class="drawer-headline">Firebase Integrator Hub</h2>
+            <p class="drawer-tagline">Step-by-step developer blueprint templates</p>
+          </div>
+        </div>
+        <button class="drawer-close-btn" onclick="closeFirebaseGuide()">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+
+      <!-- Drawer Tabs navigation bar -->
+      <nav class="drawer-tabs-navigation">
+        <button class="drawer-tab-link active" id="drawer-tab-btn-schema" onclick="switchGuideTab('schema')">
+          <i data-lucide="shield"></i>
+          <span>Firestore Schema</span>
+        </button>
+        <button class="drawer-tab-link" id="drawer-tab-btn-vanilla" onclick="switchGuideTab('vanilla')">
+          <i data-lucide="file-code"></i>
+          <span>Vanilla HTML/JS Script</span>
+        </button>
+        <button class="drawer-tab-link" id="drawer-tab-btn-react" onclick="switchGuideTab('react')">
+          <i data-lucide="code"></i>
+          <span>React Vite setup</span>
+        </button>
+      </nav>
+
+      <!-- Drawer Scrollable Content -->
+      <div class="drawer-content-scroll">
+        
+        <!-- Helpful Tips context banner banner -->
+        <div class="drawer-banner-tip">
+          <i data-lucide="lightbulb" class="bulb-icon"></i>
+          <div class="tip-message-body" id="tip-message-body">
+            <!-- Injected via scripts -->
+          </div>
+        </div>
+
+        <!-- Code rendering console platform -->
+        <div class="code-console-board">
+          <div class="console-top-ribbon">
+            <span class="file-name-indicator" id="file-name-indicator">profiles.json</span>
+            <button class="copy-console-btn" onclick="copyConsoleCodeText()">
+              <i data-lucide="copy" id="copy-icon-state"></i>
+              <span id="copy-btn-text">Copy Code</span>
+            </button>
+          </div>
+          <pre class="console-output-pre"><code id="console-output-code">
+            <!-- Snippet text loaded dynamically -->
+          </code></pre>
+        </div>
+
+      </div>
+
+      <!-- Drawer Sticky Footer -->
+      <div class="drawer-footer">
+        <div class="notification-warning-banner">
+          <span class="check-circle-green">✓</span>
+          <p>Cards created during the active browser view session will immediately populate dynamically, acting as a real-time server database simulation.</p>
+        </div>
+        <button class="drawer-action-close" onclick="closeFirebaseGuide()">Close Guide - Return to MVP</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 4. Global Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <p>&copy; 2026 HackMatch &bull; Built for Hackers, by Hackers &bull; Developed by students for the community</p>
+      <p class="footer-subtitle">Startup style minimal UI &bull; Fully responsive template and sandbox ready</p>
+    </div>
+  </footer>
+
+  <!-- Script Modules -->
+  <script src="script.js"></script>
+</body>
+</html>
